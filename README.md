@@ -13,8 +13,8 @@ const reflect = p => p.then(
 ### sample.js
 
 ```
+// Create array of promises for testing with random setTimeout
 var myArr = []
-
 for(let i=0;i<10;i++) {
   myArr.push(new Promise((resolve, reject) => {
     let random_max = 1000;
@@ -31,6 +31,7 @@ for(let i=0;i<10;i++) {
   }))
 }
 
+// Reflect
 const reflect = p => p.then(
   v => (
     { v, status: "fulfilled" }
@@ -40,6 +41,7 @@ const reflect = p => p.then(
   )
 );
 
+// Promise.all
 Promise.all(myArr.map(reflect)).then((results) => {
   console.log(results);
 })
